@@ -1,3 +1,5 @@
+.POSIX:
+
 include config.mk
 
 SRC = $(wildcard *.c)
@@ -15,7 +17,9 @@ options:
 	@echo "    ZC_LDFLAGS = $(ZC_LDFLAGS)"
 	@echo "    ZC_CC      = $(ZC_CC)"
 
-.c.o: $(HDR)
+$(OBJ): $(HDR)
+
+.c.o:
 	$(ZC_CC) $(ZC_CFLAGS) -c $<
 
 $(ZC_LIBNAME): $(OBJ)
@@ -31,10 +35,10 @@ dist: clean
 	rm -rf zc-$(ZC_VERSION)
 
 install: $(ZC_LIBNAME)
-	mkdir -p $(PREFIX)/lib
-	cp -f $(ZC_LIBNAME) $(PREFIX)/lib
+	mkdir -p $(ZC_PREFIX)/lib
+	cp -f $(ZC_LIBNAME) $(ZC_PREFIX)/lib
 
 uninstall:
-	rm -f $(PREFIX)/lib/$(ZC_LIBNAME)
+	rm -f $(ZC_PREFIX)/lib/$(ZC_LIBNAME)
 
 .PHONY: all options clean dist install uninstall
