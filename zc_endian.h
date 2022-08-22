@@ -1,7 +1,6 @@
 #ifndef ZC_ENDIAN_H
 #define ZC_ENDIAN_H
 
-#include "zc_byteswap.h"
 #include <stdint.h>
 
 uint16_t zc_htons(uint16_t);
