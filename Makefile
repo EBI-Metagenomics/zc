@@ -5,6 +5,7 @@ include config.mk
 SRC = $(wildcard *.c)
 HDR = $(wildcard *.h)
 OBJ = $(SRC:.c=.o)
+STC = $(SRC:.c=_static.h)
 
 all: options $(ZC_LIBNAME)
 
@@ -19,14 +20,14 @@ options:
 
 $(OBJ): $(HDR)
 
-.c.o:
+%.o: %.c
 	$(ZC_CC) $(ZC_CFLAGS) -c $<
 
 $(ZC_LIBNAME): $(OBJ)
 	$(AR) rcs $@ $^
 
 clean:
-	rm -f $(ZC_LIBNAME) $(OBJ) zc-$(ZC_VERSION).tar.gz
+	rm -f $(ZC_LIBNAME) $(OBJ) $(STC) zc-$(ZC_VERSION).tar.gz
 
 dist: clean
 	mkdir -p zc-$(ZC_VERSION)
@@ -40,5 +41,8 @@ install: $(ZC_LIBNAME)
 
 uninstall:
 	rm -f $(ZC_PREFIX)/lib/$(ZC_LIBNAME)
+
+%_static.h: %.c
+	./extricate.sh $> > $<
 
 .PHONY: all options clean dist install uninstall

@@ -4,8 +4,10 @@
 #include <inttypes.h>
 #include <limits.h>
 
-long long zc_strto_llong(const char *restrict nptr, char **restrict endptr,
-                         int base)
+#define ZC_API
+
+ZC_API long long zc_strto_llong(const char *restrict nptr,
+                                char **restrict endptr, int base)
 {
     errno = 0;
     intmax_t v = strtoimax(nptr, endptr, base);
@@ -29,7 +31,8 @@ long long zc_strto_llong(const char *restrict nptr, char **restrict endptr,
     return (long long)v;
 }
 
-long zc_strto_long(const char *restrict nptr, char **restrict endptr, int base)
+ZC_API long zc_strto_long(const char *restrict nptr, char **restrict endptr,
+                          int base)
 {
     errno = 0;
     intmax_t v = strtoimax(nptr, endptr, base);
@@ -53,7 +56,8 @@ long zc_strto_long(const char *restrict nptr, char **restrict endptr, int base)
     return (long)v;
 }
 
-int zc_strto_int(const char *restrict nptr, char **restrict endptr, int base)
+ZC_API int zc_strto_int(const char *restrict nptr, char **restrict endptr,
+                        int base)
 {
     errno = 0;
     intmax_t v = strtoimax(nptr, endptr, base);
@@ -77,8 +81,8 @@ int zc_strto_int(const char *restrict nptr, char **restrict endptr, int base)
     return (int)v;
 }
 
-short zc_strto_short(const char *restrict nptr, char **restrict endptr,
-                     int base)
+ZC_API short zc_strto_short(const char *restrict nptr, char **restrict endptr,
+                            int base)
 {
     errno = 0;
     intmax_t v = strtoimax(nptr, endptr, base);
@@ -102,8 +106,8 @@ short zc_strto_short(const char *restrict nptr, char **restrict endptr,
     return (short)v;
 }
 
-unsigned long long zc_strto_ullong(const char *restrict nptr,
-                                   char **restrict endptr, int base)
+ZC_API unsigned long long zc_strto_ullong(const char *restrict nptr,
+                                          char **restrict endptr, int base)
 {
     errno = 0;
     uintmax_t v = strtoumax(nptr, endptr, base);
@@ -121,8 +125,8 @@ unsigned long long zc_strto_ullong(const char *restrict nptr,
     return (unsigned long long)v;
 }
 
-unsigned long zc_strto_ulong(const char *restrict nptr, char **restrict endptr,
-                             int base)
+ZC_API unsigned long zc_strto_ulong(const char *restrict nptr,
+                                    char **restrict endptr, int base)
 {
     errno = 0;
     uintmax_t v = strtoumax(nptr, endptr, base);
@@ -140,8 +144,8 @@ unsigned long zc_strto_ulong(const char *restrict nptr, char **restrict endptr,
     return (unsigned long)v;
 }
 
-unsigned int zc_strto_uint(const char *restrict nptr, char **restrict endptr,
-                           int base)
+ZC_API unsigned int zc_strto_uint(const char *restrict nptr,
+                                  char **restrict endptr, int base)
 {
     errno = 0;
     uintmax_t v = strtoumax(nptr, endptr, base);
@@ -159,8 +163,8 @@ unsigned int zc_strto_uint(const char *restrict nptr, char **restrict endptr,
     return (unsigned int)v;
 }
 
-unsigned short zc_strto_ushort(const char *restrict nptr,
-                               char **restrict endptr, int base)
+ZC_API unsigned short zc_strto_ushort(const char *restrict nptr,
+                                      char **restrict endptr, int base)
 {
     errno = 0;
     uintmax_t v = strtoumax(nptr, endptr, base);
@@ -178,8 +182,8 @@ unsigned short zc_strto_ushort(const char *restrict nptr,
     return (unsigned short)v;
 }
 
-int64_t zc_strto_int64(const char *restrict nptr, char **restrict endptr,
-                       int base)
+ZC_API int64_t zc_strto_int64(const char *restrict nptr, char **restrict endptr,
+                              int base)
 {
     errno = 0;
     intmax_t v = strtoimax(nptr, endptr, base);
@@ -203,8 +207,8 @@ int64_t zc_strto_int64(const char *restrict nptr, char **restrict endptr,
     return (int64_t)v;
 }
 
-int32_t zc_strto_int32(const char *restrict nptr, char **restrict endptr,
-                       int base)
+ZC_API int32_t zc_strto_int32(const char *restrict nptr, char **restrict endptr,
+                              int base)
 {
     errno = 0;
     intmax_t v = strtoimax(nptr, endptr, base);
@@ -228,8 +232,8 @@ int32_t zc_strto_int32(const char *restrict nptr, char **restrict endptr,
     return (int32_t)v;
 }
 
-int16_t zc_strto_int16(const char *restrict nptr, char **restrict endptr,
-                       int base)
+ZC_API int16_t zc_strto_int16(const char *restrict nptr, char **restrict endptr,
+                              int base)
 {
     errno = 0;
     intmax_t v = strtoimax(nptr, endptr, base);
@@ -253,8 +257,8 @@ int16_t zc_strto_int16(const char *restrict nptr, char **restrict endptr,
     return (int16_t)v;
 }
 
-int8_t zc_strto_int8(const char *restrict nptr, char **restrict endptr,
-                     int base)
+ZC_API int8_t zc_strto_int8(const char *restrict nptr, char **restrict endptr,
+                            int base)
 {
     errno = 0;
     intmax_t v = strtoimax(nptr, endptr, base);
@@ -278,8 +282,8 @@ int8_t zc_strto_int8(const char *restrict nptr, char **restrict endptr,
     return (int8_t)v;
 }
 
-uint64_t zc_strto_uint64(const char *restrict nptr, char **restrict endptr,
-                         int base)
+ZC_API uint64_t zc_strto_uint64(const char *restrict nptr,
+                                char **restrict endptr, int base)
 {
     errno = 0;
     uintmax_t v = strtoumax(nptr, endptr, base);
@@ -297,8 +301,8 @@ uint64_t zc_strto_uint64(const char *restrict nptr, char **restrict endptr,
     return (uint64_t)v;
 }
 
-uint32_t zc_strto_uint32(const char *restrict nptr, char **restrict endptr,
-                         int base)
+ZC_API uint32_t zc_strto_uint32(const char *restrict nptr,
+                                char **restrict endptr, int base)
 {
     errno = 0;
     uintmax_t v = strtoumax(nptr, endptr, base);
@@ -316,8 +320,8 @@ uint32_t zc_strto_uint32(const char *restrict nptr, char **restrict endptr,
     return (uint32_t)v;
 }
 
-uint16_t zc_strto_uint16(const char *restrict nptr, char **restrict endptr,
-                         int base)
+ZC_API uint16_t zc_strto_uint16(const char *restrict nptr,
+                                char **restrict endptr, int base)
 {
     errno = 0;
     uintmax_t v = strtoumax(nptr, endptr, base);
@@ -335,8 +339,8 @@ uint16_t zc_strto_uint16(const char *restrict nptr, char **restrict endptr,
     return (uint16_t)v;
 }
 
-uint8_t zc_strto_uint8(const char *restrict nptr, char **restrict endptr,
-                       int base)
+ZC_API uint8_t zc_strto_uint8(const char *restrict nptr, char **restrict endptr,
+                              int base)
 {
     errno = 0;
     uintmax_t v = strtoumax(nptr, endptr, base);
