@@ -43,6 +43,6 @@ uninstall:
 	rm -f $(ZC_PREFIX)/lib/$(ZC_LIBNAME)
 
 %_static.h: %.c
-	./extricate.sh $> > $<
+	./extricate.sh $< > $@
 
 .PHONY: all options clean dist install uninstall

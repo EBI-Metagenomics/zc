@@ -3,14 +3,16 @@
 #include <stddef.h>
 #include <string.h>
 
+#define ZC_API
+
 // Acknowledgment: gblic
-char *zc_basename(char *path)
+ZC_API char *zc_basename(char *path)
 {
     char *p = strrchr(path, ZC_PATH_SEP);
     return p ? p + 1 : path;
 }
 
-char *zc_dirname(char *path)
+ZC_API char *zc_dirname(char *path)
 {
     char *p = strrchr(path, ZC_PATH_SEP);
     while (p > path)

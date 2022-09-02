@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *zc_strdup(char const *str)
+#define ZC_API
+
+ZC_API char *zc_strdup(char const *str)
 {
     size_t len = strlen(str) + 1;
     void *new = malloc(len);
@@ -21,7 +23,7 @@ char *zc_strdup(char const *str)
  *
  * Copyright (c) 1998, 2015 Todd C. Miller <Todd.Miller@courtesan.com>
  */
-size_t zc_strlcat(char *dst, char const *src, size_t dsize)
+ZC_API size_t zc_strlcat(char *dst, char const *src, size_t dsize)
 {
     const char *odst = dst;
     const char *osrc = src;
@@ -63,7 +65,7 @@ size_t zc_strlcat(char *dst, char const *src, size_t dsize)
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-size_t zc_strlcpy(char *dst, char const *src, size_t dsize)
+ZC_API size_t zc_strlcpy(char *dst, char const *src, size_t dsize)
 {
     char const *osrc = src;
     size_t nleft = dsize;

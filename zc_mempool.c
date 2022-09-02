@@ -1,9 +1,10 @@
 /* Acknowledgment: https://github.com/dcreager/libcork */
+#include "zc_mempool.h"
 #include <assert.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "zc_mempool.h"
+#define ZC_API
 
 struct proxy
 {
@@ -40,7 +41,7 @@ static inline void *get_object_from_proxy(struct proxy *proxy)
     return ((struct proxy *)(proxy)) + 1;
 }
 
-struct mempool *zc_mempool_new(unsigned bits, size_t object_size)
+ZC_API struct mempool *zc_mempool_new(unsigned bits, size_t object_size)
 {
     struct mempool *mp = malloc(sizeof(struct mempool));
     if (!mp) return 0;
@@ -53,7 +54,7 @@ struct mempool *zc_mempool_new(unsigned bits, size_t object_size)
     return mp;
 }
 
-void zc_mempool_del(struct mempool *mp)
+ZC_API void zc_mempool_del(struct mempool *mp)
 {
     assert(mp->allocated_count == 0);
 
@@ -92,7 +93,7 @@ static bool new_block(struct mempool *mp)
     return true;
 }
 
-void *zc_mempool_new_object(struct mempool *mp)
+ZC_API void *zc_mempool_new_object(struct mempool *mp)
 {
     if (!mp->free_list && !new_block(mp)) return 0;
 
@@ -102,7 +103,7 @@ void *zc_mempool_new_object(struct mempool *mp)
     return get_object_from_proxy(obj);
 }
 
-void zc_mempool_del_object(struct mempool *mp, void *object)
+ZC_API void zc_mempool_del_object(struct mempool *mp, void *object)
 {
     struct proxy *proxy = get_proxy_from_object(object);
     proxy->next_free = mp->free_list;

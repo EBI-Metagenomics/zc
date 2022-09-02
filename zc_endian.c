@@ -2,6 +2,8 @@
 #include "zc_byteswap.h"
 #include <stdlib.h>
 
+#define ZC_API
+
 enum
 {
     ZC_ENDIAN_LITTLE = 1234,
@@ -22,22 +24,22 @@ enum
 
 #if ZC_ENDIAN_NATIVE == ZC_ENDIAN_LITTLE
 
-uint16_t zc_htons(uint16_t x) { return zc_byteswap16(x); }
-uint32_t zc_htonl(uint32_t x) { return zc_byteswap32(x); }
-uint64_t zc_htonll(uint64_t x) { return zc_byteswap64(x); }
+ZC_API uint16_t zc_htons(uint16_t x) { return zc_byteswap16(x); }
+ZC_API uint32_t zc_htonl(uint32_t x) { return zc_byteswap32(x); }
+ZC_API uint64_t zc_htonll(uint64_t x) { return zc_byteswap64(x); }
 
-uint16_t zc_ntohs(uint16_t x) { return zc_htons(x); }
-uint32_t zc_ntohl(uint32_t x) { return zc_htonl(x); }
-uint64_t zc_ntohll(uint64_t x) { return zc_htonll(x); }
+ZC_API uint16_t zc_ntohs(uint16_t x) { return zc_htons(x); }
+ZC_API uint32_t zc_ntohl(uint32_t x) { return zc_htonl(x); }
+ZC_API uint64_t zc_ntohll(uint64_t x) { return zc_htonll(x); }
 
 #else
-uint16_t zc_htons(uint16_t x) { return x; }
-uint32_t zc_htonl(uint32_t x) { return x; }
-uint64_t zc_htonll(uint64_t x) { return x; }
+ZC_API uint16_t zc_htons(uint16_t x) { return x; }
+ZC_API uint32_t zc_htonl(uint32_t x) { return x; }
+ZC_API uint64_t zc_htonll(uint64_t x) { return x; }
 
-uint16_t zc_ntohs(uint16_t x) { return x; }
-uint32_t zc_ntohl(uint32_t x) { return x; }
-uint64_t zc_ntohll(uint64_t x) { return x; }
+ZC_API uint16_t zc_ntohs(uint16_t x) { return x; }
+ZC_API uint32_t zc_ntohl(uint32_t x) { return x; }
+ZC_API uint64_t zc_ntohll(uint64_t x) { return x; }
 #endif
 
 #else
@@ -67,26 +69,26 @@ static int zc_endianness(void)
     }
 }
 
-uint16_t zc_htons(uint16_t x)
+ZC_API uint16_t zc_htons(uint16_t x)
 {
     if (zc_endianness() == ZC_ENDIAN_BIG) return x;
     return zc_byteswap16(x);
 }
 
-uint32_t zc_htonl(uint32_t x)
+ZC_API uint32_t zc_htonl(uint32_t x)
 {
     if (zc_endianness() == ZC_ENDIAN_BIG) return x;
     return zc_byteswap32(x);
 }
 
-uint64_t zc_htonll(uint64_t x)
+ZC_API uint64_t zc_htonll(uint64_t x)
 {
     if (zc_endianness() == ZC_ENDIAN_BIG) return x;
     return zc_byteswap64(x);
 }
 
-uint16_t zc_ntohs(uint16_t x) { return zc_htons(x); }
-uint32_t zc_ntohl(uint32_t x) { return zc_htonl(x); }
-uint64_t zc_ntohll(uint64_t x) { return zc_htonll(x); }
+ZC_API uint16_t zc_ntohs(uint16_t x) { return zc_htons(x); }
+ZC_API uint32_t zc_ntohl(uint32_t x) { return zc_htonl(x); }
+ZC_API uint64_t zc_ntohll(uint64_t x) { return zc_htonll(x); }
 
 #endif

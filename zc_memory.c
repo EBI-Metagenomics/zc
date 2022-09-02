@@ -3,7 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-void *zc_reallocf(void *ptr, size_t size)
+#define ZC_API
+
+ZC_API void *zc_reallocf(void *ptr, size_t size)
 {
     assert(size > 0);
     void *new_ptr = realloc(ptr, size);
@@ -12,4 +14,4 @@ void *zc_reallocf(void *ptr, size_t size)
     return new_ptr;
 }
 
-void zc_bzero(void *dst, size_t dsize) { memset(dst, 0, dsize); }
+ZC_API void zc_bzero(void *dst, size_t dsize) { memset(dst, 0, dsize); }

@@ -13,4 +13,4 @@ MODULE=$(echo "$module" | tr '[:lower:]' '[:upper:]')
         sed '/./,$!d'
     echo
     echo "#endif"
-} >"${module}_static.h"
+}
