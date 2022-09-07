@@ -23,4 +23,8 @@ uint32_t zc_strto_uint32(const char *restrict, char **restrict, int);
 uint16_t zc_strto_uint16(const char *restrict, char **restrict, int);
 uint8_t zc_strto_uint8(const char *restrict, char **restrict, int);
 
+float zc_strto_float(const char *restrict, char **restrict);
+double zc_strto_double(const char *restrict, char **restrict);
+long double zc_strto_ldouble(const char *restrict, char **restrict);
+
 #endif
